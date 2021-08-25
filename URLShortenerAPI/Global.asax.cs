@@ -13,11 +13,15 @@ namespace URLShortenerAPI
     {
         protected void Application_Start()
         {
+            //This normally wouldn't be here, but I need to imitate DB somehow...
+            Application["Links"] = new List<Tuple<string, string>>();
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
     }
 }
